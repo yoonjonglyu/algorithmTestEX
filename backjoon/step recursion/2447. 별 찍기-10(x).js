@@ -42,7 +42,7 @@
     }
 
     RESULT.map(ans => console.log(ans.join('')));
-})(81);
+})(27);
 /*
 012345678
 *********0
