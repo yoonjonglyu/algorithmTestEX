@@ -1,31 +1,39 @@
 (function main(H, M){
-    if(M >= 45){
-        M = M - 45;
+    let hour = H;
+    let min = M;
+
+    if(M - 45 >= 0){
+        min = min - 45;   
     } else {
-        if(H-1 > 0){
-            H = H-1;
+        if(hour - 1 >= 0){
+            hour--;
+            min = min + 15;
         } else {
-            H = 23;
+            hour = 23;
+            min = min + 15;
         }
-        M = M + 60 - 45;
     }
-    console.log(H+" "+M);
-})(0, 15);
+    console.log(hour + " " + min);
+})(23, 40);
     
 /* 백준은 값을 인자로 주는게 아니라 읽어와야한다
-    var fs = require('fs');
-    var I = fs.readFileSync('/dev/stdin').toString().split(' ');
-    var H = parseInt(I[0]);
-    var M = parseInt(I[1]);
-    if(M >= 45){
-        M = M - 45;
+    const fs = require('fs');
+    const I = fs.readFileSync('/dev/stdin').toString().split(' ');
+    const H = parseInt(I[0]);
+    const M = parseInt(I[1]);
+    let hour = H;
+    let min = M;
+
+    if(M - 45 >= 0){
+        min = min - 45;   
     } else {
-        if(H-1 > 0){
-            H = H-1;
+        if(hour - 1 >= 0){
+            hour--;
+            min = min + 15;
         } else {
-            H = 23;
+            hour = 23;
+            min = min + 15;
         }
-        M = M + 60 - 45;
     }
-    console.log(H+" "+M);
+    console.log(hour + " " + min);
 */
