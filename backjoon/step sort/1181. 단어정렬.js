@@ -73,4 +73,5 @@
     const result = temp.join('\n');
 
     console.log(result);
+    시간초과가 뜬다. 퀵정렬을 이용해야할거같다.
 */
