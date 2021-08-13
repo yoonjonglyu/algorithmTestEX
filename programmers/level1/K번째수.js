@@ -49,8 +49,7 @@ function solution(array, commands) {
     return commands.map((command) => {
         command[0]--, command[2]--;
         const [start, end, result] = command;
-        const state = array.slice(start, end).sort((a, b) => a - b);
 
-        return state[result];
+        return array.slice(start, end).sort((a, b) => a - b)[result];
     });
 }
