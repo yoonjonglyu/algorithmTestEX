@@ -96,7 +96,7 @@
 
 function solution(new_id) {
     let result = new_id.toLowerCase() // 대문자 제거
-        .match(/[a-z0-9-_.]/g, '').join('') // 허용 하는 문자들 제외 제거
+        .match(/[a-z0-9-_.]/g).join('') // 허용 하는 문자들 제외 제거
         .replace(/\.+/g, '.') // .n제거
         .replace(/^\./, '') // 앞 . 제거
         .substring(0, 15) // 15길이 제한
@@ -126,12 +126,12 @@ const solution = (new_id) => {
 // padEnd 사용
 function solution(new_id) {
     const result = new_id.toLowerCase() // 대문자 제거
-        .match(/[a-z0-9-_.]/g, '').join('') // 허용 하는 문자들 제외 제거
+        .match(/[a-z0-9-_.]/g).join('') // 허용 하는 문자들 제외 제거
         .replace(/\.+/g, '.') // .n제거
         .replace(/^\./, '') // 앞 . 제거
         .substring(0, 15) // 15길이 제한
         .replace(/\.$/, '') // 다시 뒤 . 제거
         .padEnd(1, 'a');
-        
+
     return result.padEnd(3, result[(result.length - 1)]);
 }
