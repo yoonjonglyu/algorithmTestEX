@@ -32,7 +32,7 @@ function solution(d, budget) {
             return budget >= 0 ? (result + 1) : result;
         }, 0);
 }
-/* 다른사람 풀이 */
-function solution(d, budget) { // 비트연산이라 좀 더 평균적으로 빠르다.
+/* 다른사람 풀이 비트연산 */
+function solution(d, budget) {
     return ~(~d.sort((a,b)=>a-b).map(v => budget -= v).findIndex(v => v < 0) || ~d.length);
 }
