@@ -29,7 +29,7 @@
 
 function solution(numbers) {
     return Array.from(new Set(numbers.reduce((result, current, rdx) => {
-        numbers.map((num, idx) => {
+        numbers.forEach((num, idx) => {
             if (idx !== rdx) result.push(current + num);
         });
         return result;
