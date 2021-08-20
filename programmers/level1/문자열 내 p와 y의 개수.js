@@ -18,11 +18,11 @@
 // 'p'의 개수 1개, 'y'의 개수 2개로 다르므로 false를 return 합니다.
 
 function solution(s) {
-    return Boolean(Array.from(s)
+    return Array.from(s)
         .reduce((result, char) => {
             if (char === "p" || char === "P") result[0]++;
             if (char === "y" || char === "Y") result[1]++;
             return result;
         }, [0, 0])
-        .find((num, idx, arr) => num === arr[idx + 1]));
+        .find((num, idx, arr) => num === arr[idx + 1]) !== undefined ? true : false;
 }
