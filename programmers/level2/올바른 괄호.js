@@ -20,11 +20,18 @@
 
 function solution(s) {
     let result = 0;
-
+    
     Array.from(s).some((char) => {
         char === '(' ? result++ : result--;
-        if(result < 0) return true;
+        if (result < 0) return true;
     })
 
-    return result === 0 ? true : false;
+    return result === 0;
+}
+
+function solution(s, result = 0) {
+    return !Array.from(s).some((char) => {
+        char === '(' ? result++ : result--;
+        if (result < 0) return true;
+    }) && result === 0;
 }
