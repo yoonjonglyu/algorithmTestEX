@@ -25,9 +25,9 @@
 // 문제의 예시와 같습니다.
 
 function solution(land) {
-    return Math.max(...land.reduce((_, row, rdx) =>
-        land[rdx] = row.map((num, cdx) => {
-            const state = Array.from(land[rdx - 1]);
+    return Math.max(...land.reduce((result, row, rdx) =>
+        row.map((num, cdx) => {
+            const state = Array.from(result);
             state[cdx] = 0;
             return num + Math.max(...state);
         })
