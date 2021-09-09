@@ -56,7 +56,7 @@ function solution(str1, str2) {
             })
             .filter((word) => word !== null)
     ];
-    if (b.length === 0) return 65536;
+    if (a.length === 0 && b.length === 0) return 65536;
 
     let count = 0;
     a.forEach((a) => {
