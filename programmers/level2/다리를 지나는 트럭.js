@@ -50,23 +50,18 @@ function solution(bridge_length, weight, truck_weights) {
 function solution(bridge_length, weight, truck_weights) {
     return truck_weights.reduce((result, current) => {
         result[0] = result[0].filter((truck) => truck[1] > 0); // 남은 시간이 없을 경우 제거
+        result[0] = result[0].map((truck) => [truck[0], truck[1] - 1]); // 시간의 흐름
 
         /* 다리 위의 트럭들과 현재 트럭의 무게 합과 길이가 다리 조건에 맞는지 체크 */
-        if (result[0].reduce((ac, w) => ac + w[0], 0) + current < weight && result[0].length + 1 <= bridge_length) {
-            result[0] = result[0].map((truck) => [truck[0], truck[1] - 1]); // 시간의 흐름
-            result[0].push([current, bridge_length]); // 트럭 무게, 다리를 지나는데 걸리는 시간
-            result[1]++;
-        } else {
-            result[0] = result[0].map((truck) => [truck[0], truck[1] - 1]); // 시간의 흐름
-            
-            while (result[0].reduce((ac, w) => ac + w[0], 0) + current > weight || result[0].length + 1 > bridge_length) {
-                const time = result[0].shift()[1];
-                result[1] += time;
-                result[0] = result[0].map((truck) => [truck[0], truck[1] - time]);
-            }
-            result[0].push([current, bridge_length]);
-            result[1]++;
+        while (result[0].reduce((ac, w) => ac + w[0], 0) + current > weight || result[0].length + 1 > bridge_length) {
+            const time = result[0].shift()[1];
+            result[1] += time;
+            result[0] = result[0].map((truck) => [truck[0], truck[1] - time]);
         }
+
+        result[0].push([current, bridge_length]); // 트럭 무게, 다리를 지나는데 걸리는 시간
+        result[1]++;
+        
         return result;
     }, [[], 0])
         .reduce((result, time) => result[result.length - 1][1] + time);
