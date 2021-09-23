@@ -18,7 +18,7 @@
 function solution(citations) {
     return citations.sort((a, b) => b - a)
         .reduce((result, current, idx) => {
-            if (current >= idx + 1 && (citations.length) > (idx)) {
+            if (current >= idx + 1) {
                 result = idx + 1;
             }
             return result;
