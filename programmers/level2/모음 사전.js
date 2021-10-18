@@ -29,32 +29,24 @@
 // "EIO"는 1189번째 단어입니다.
 
 function solution(word) {
-    const char = ['A', 'E', 'I', 'O', 'U'];
-
-    return char.reduce((result, current) => {
-        const state = [];
-        state.push(current);
-        if (!result.has(state.join(''))) result.set(state.join(''), result.size + 1);
-        char.forEach((current) => {
-            state.push(current);
-            if (!result.has(state.join(''))) result.set(state.join(''), result.size + 1);
-            char.forEach((current) => {
-                state.push(current);
-                if (!result.has(state.join(''))) result.set(state.join(''), result.size + 1);
-                char.forEach((current) => {
+    return ['A', 'E', 'I', 'O', 'U'].reduce((result, c, _, char) => {
+        const rec = (state, n) => {
+            if (!result.has(word)) {
+                char.some((current) => {
                     state.push(current);
-                    if (!result.has(state.join(''))) result.set(state.join(''), result.size + 1);
-                    char.forEach((current) => {
-                        state.push(current);
-                        if (!result.has(state.join(''))) result.set(state.join(''), result.size + 1);
-                        state.pop();
-                    });
+                    const check = state.join('');
+                    if (!result.has(check)) {
+                        result.set((check), result.size + 1);
+                        if (check === word) return true;
+                    }
+                    if (n > 0) {
+                        rec(state, n - 1);
+                    }
                     state.pop();
                 });
-                state.pop();
-            });
-            state.pop();
-        });
+            }
+        }
+        rec([], 4);
 
         return result;
     }, new Map()).get(word);
