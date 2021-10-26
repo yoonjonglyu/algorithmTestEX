@@ -38,12 +38,12 @@ function solution(k, dungeons) {
 
             const next = Array.from(dungeons);
             next.splice(idx, 1);
-            overloop(next);
+            loop(next);
         }
 
         return result;
 
-        function overloop(dungeons) {
+        function loop(dungeons) {
             dungeons.forEach((current, idx) => {
                 if (current[0] <= state) {
                     state -= current[1];
@@ -51,7 +51,7 @@ function solution(k, dungeons) {
                     if (dungeons.length > 0) {
                         const next = Array.from(dungeons);
                         next.splice(idx, 1);
-                        overloop(next);
+                        loop(next);
                     }
                     result = count > result ? count : result;
                     state += current[1];
