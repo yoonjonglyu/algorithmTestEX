@@ -143,21 +143,21 @@ function solution(n, info) {
                 }
             }
         }
-        if (n >= 0) {
+        if (n > 0) {
             for (let idx = index; idx < info.length; idx++) {
                 const state = n - (info[idx] + 1) >= 0 ?
                     info[idx] + 1 :
                     n;
 
                 stack[idx] = state;
-                if (n - state >= 0) dfs((n - state), (idx + 1), stack);
+                dfs((n - state), (idx + 1), stack);
                 stack[idx] = 0;
             };
         }
     }
 
     dfs(n, 0);
-    
+
     return result.answer;
 
     function checkScore(ryan, ape) {
