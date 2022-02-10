@@ -77,16 +77,14 @@ function solution(jobs) {
         return 1;
     });
 
-    let current;
+    const queue = [];
     let time = jobs[0][0];
-    while (jobs.length > 0) {
-        current = jobs.shift();
-        const queue = [current];
-
-        while (queue.length > 0) {
+    while (jobs.length > 0) { // jobs을 모두 비울때 까지 반복
+        queue.push(jobs.shift());
+        
+        while (queue.length > 0) {// queue를 모두 비울때까지 반복
             while (jobs.length > 0 && time >= jobs[0][0]) { // 경쟁 task 필터링
-                current = jobs.shift();
-                queue.push(current);
+                queue.push(jobs.shift());
             }
             queue.sort((a, b) => a[1] - b[1]); // task 정렬 소요시간
 
