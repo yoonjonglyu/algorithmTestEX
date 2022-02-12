@@ -55,5 +55,6 @@ function solution(n, computers) {
     return computers
         .reduce((result, current, idx) => current ?
             result + dfs(idx) :
-            result, 0);
+            result
+            , 0);
 }
