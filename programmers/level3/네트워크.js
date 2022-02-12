@@ -40,3 +40,20 @@ function solution(n, computers) {
         return result;
     }, 0);
 }
+
+function solution(n, computers) {
+    const dfs = (index) => {
+        computers[index] = false;
+
+        computers.forEach((net, idx) => {
+            if (net && net[index] === 1) dfs(idx);
+        });
+
+        return 1;
+    }
+
+    return computers
+        .reduce((result, current, idx) => current ?
+            result + dfs(idx) :
+            result, 0);
+}
